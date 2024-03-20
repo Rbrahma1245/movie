@@ -1,0 +1,20 @@
+.header-container {
+  height: 50px;
+  border-bottom: 1px solid #bb9c21;
+  font-family: "Besley";
+  font-size: 26px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+
+  .lottie {
+    background-color: #bb9c21;
+    width: 8%;
+    border-radius: 4px;
+  }
+  p {
+    margin: 0;
+    color: #d1b74a;
+  }
+}
