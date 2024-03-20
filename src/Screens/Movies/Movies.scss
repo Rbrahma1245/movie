@@ -1,0 +1,24 @@
+.MuiPaper-root {
+  width: 220px !important;
+  height: 420px !important;
+  background-color: #02041c  !important;
+  color: #bb9c21 !important;
+  border-radius: 9px !important;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-container {
+  margin-top: 50px;
+
+  .movie-box {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50;
+    justify-content: center;
+  }
+}

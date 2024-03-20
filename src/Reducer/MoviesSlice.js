@@ -1,23 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchAPI = createAsyncThunk("fetchAPI", async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/discover/movie?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef`
-  );
-  return response.data;
-});
-
 const initialState = {
   data: [],
   loading: "idle",
   error: null,
+  page: 1,
 };
+
+export const fetchAPI = createAsyncThunk("fetchAPI", async (page) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef&page=${page}`
+  );
+  return response.data;
+});
 
 const MovieSlice = createSlice({
   name: "movie",
   initialState,
-  reducers: {},
+  reducers: {
+    changePage: (state) => {
+      state.page += 1;
+    },
+  },
   extraReducers: (builder) => {
     // console.log(builder, "builder");
     builder
@@ -35,5 +40,5 @@ const MovieSlice = createSlice({
   },
 });
 
-export const { selectOption } = MovieSlice.actions;
+export const { changePage } = MovieSlice.actions;
 export default MovieSlice.reducer;

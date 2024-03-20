@@ -1,0 +1,28 @@
+.css-46bh2p-MuiCardContent-root {
+  padding: 6px !important;
+}
+
+.card-container {
+  cursor: pointer;
+  text-align: center;
+  background-color: black;
+  border-radius: 9px;
+
+  img {
+    height: 300px;
+    width: 100%;
+    object-fit: inherit;
+  }
+  .MuiCardActions-root {
+    display: flex !important;
+    justify-content: space-between;
+  }
+
+  .MuiTypography-h6 {
+    font-size: 16px !important;
+  }
+
+  button {
+    color: #bb9c21;
+  }
+}
