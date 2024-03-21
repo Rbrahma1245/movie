@@ -5,6 +5,7 @@ import Movies from "./Screens/Movies/Movies";
 import TVSeries from "./Screens/TVSeries/TVSeries";
 import Page404 from "./Screens/Page404";
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/tvseries" element={<TVSeries />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
 
       {/* <BrowserRouter>

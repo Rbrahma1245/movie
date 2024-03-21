@@ -28,12 +28,12 @@ const CardList = ({ elem }) => {
           />
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              {elem.original_title}
+              {elem.original_title || elem.original_name}
             </Typography>
           </CardContent>
           <CardActions>
             <Button size="small">Movie</Button>
-            <Button size="small">{elem.release_date}</Button>
+            <Button size="small">{elem.release_date || elem.first_air_date}</Button>
           </CardActions>
         </Card>
       </Badge>
