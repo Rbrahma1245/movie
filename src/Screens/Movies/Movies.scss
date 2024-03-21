@@ -1,7 +1,7 @@
 .MuiPaper-root {
   width: 220px !important;
   height: 420px !important;
-  background-color: #02041c  !important;
+  background-color: #02041c !important;
   color: #bb9c21 !important;
   border-radius: 9px !important;
 
@@ -11,7 +11,14 @@
 }
 
 .movie-container {
-  margin-top: 50px;
+  // margin-bottom: 50px;
+  text-align: center;
+
+  h2 {
+    letter-spacing: 2px;
+    font-weight: 300;
+    color: #c9c4b3;
+  }
 
   .movie-box {
     color: white;

@@ -6,14 +6,19 @@ const initialState = {
   loading: "idle",
   error: null,
   page: 1,
+  dbType: "trending/all/day"
 };
 
-export const fetchAPI = createAsyncThunk("fetchAPI", async (page) => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/discover/movie?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef&page=${page}`
-  );
-  return response.data;
-});
+export const fetchAPI = createAsyncThunk(
+  "fetchAPI",
+  async ({ page, dbType }) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/${dbType}?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef&page=${page}`
+    );
+    return response.data;
+  }
+);
+
 
 const MovieSlice = createSlice({
   name: "movie",
@@ -21,6 +26,9 @@ const MovieSlice = createSlice({
   reducers: {
     changePage: (state) => {
       state.page += 1;
+    },
+    changeAPI: (state, action) => {
+      state.dbType = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -40,5 +48,5 @@ const MovieSlice = createSlice({
   },
 });
 
-export const { changePage } = MovieSlice.actions;
+export const { changePage, changeAPI } = MovieSlice.actions;
 export default MovieSlice.reducer;
