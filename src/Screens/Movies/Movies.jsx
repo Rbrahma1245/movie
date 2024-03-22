@@ -5,13 +5,12 @@ import CardList from "../../Components/Card/Card";
 
 import "./Movies.scss";
 import Loader from "../../Components/Loader";
+import MovieGenre from "../../Components/MovieGenre/MovieGenre";
 // import Pagination from "../../Components/Pagination/Pagination";
 
 const Movies = () => {
   const movie = useSelector((state) => state.movie);
   const dispatch = useDispatch();
-
-  console.log(movie);
 
   useEffect(() => {
     dispatch(fetchAPI({ page: movie.page, dbType: movie.dbType }));
@@ -30,6 +29,8 @@ const Movies = () => {
           ? "TRENDING"
           : ""}
       </h2>
+
+      <MovieGenre />
 
       <div className="movie-box">
         {movie.data.results?.map((e, i) => (
