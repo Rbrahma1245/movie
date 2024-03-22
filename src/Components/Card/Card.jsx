@@ -15,6 +15,7 @@ const CardList = ({ elem }) => {
   const movie = useSelector((state) => state.movie);
 
   let rating = elem.vote_average.toFixed(2);
+
   return (
     <motion.div
       className="card-container"
@@ -35,16 +36,16 @@ const CardList = ({ elem }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" style={{ textTransform: 'none' }}>
+            <Button size="small" style={{ textTransform: "none" }}>
               {movie.dbType === "discover/movie"
                 ? "Movies"
                 : movie.dbType === "discover/tv"
                 ? "TV Series"
                 : movie.dbType === "trending/all/day"
-                ? "Trending"
+                ? elem.media_type?.replace(/^\w/, (c) => c.toUpperCase())
                 : ""}
             </Button>
-            <Button size="small" style={{ textTransform: 'none' }}>
+            <Button size="small" style={{ textTransform: "none" }}>
               {elem.release_date || elem.first_air_date}
             </Button>
           </CardActions>
