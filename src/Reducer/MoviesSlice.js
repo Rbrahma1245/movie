@@ -7,7 +7,7 @@ const initialState = {
   error: null,
   page: 1,
   dbType: "trending/all/day",
-  movieGenre: {}
+  movieGenre: {},
 };
 
 export const fetchAPI = createAsyncThunk(
@@ -20,27 +20,24 @@ export const fetchAPI = createAsyncThunk(
   }
 );
 
-export const fetchMovieGenre = createAsyncThunk(
-  "fetchMovieGenre",
-  async () => {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef`
-    );
-    return response.data;
-  }
-);
-
+export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async () => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef`
+  );
+  return response.data;
+});
 
 const MovieSlice = createSlice({
   name: "movie",
   initialState,
   reducers: {
-    changePage: (state) => {
-      state.page += 1;
+    changePage: (state, action) => {
+      state.page = action.payload;
     },
     changeAPI: (state, action) => {
       state.dbType = action.payload;
-      state.movieGenre={}
+      state.movieGenre = {};
+      state.page = 1;
     },
   },
   extraReducers: (builder) => {
@@ -60,8 +57,7 @@ const MovieSlice = createSlice({
 
       .addCase(fetchMovieGenre.fulfilled, (state, action) => {
         state.movieGenre = action.payload;
-      })
- 
+      });
   },
 });
 

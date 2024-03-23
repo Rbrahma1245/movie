@@ -5,8 +5,9 @@ import CardList from "../../Components/Card/Card";
 
 import "./Movies.scss";
 import Loader from "../../Components/Loader";
-import MovieGenre from "../../Components/MovieGenre/MovieGenre";
-// import Pagination from "../../Components/Pagination/Pagination";
+import Pagination from "../../Components/Pagination/Pagination";
+import PaginationPage from "../../Components/Pagination/Pagination";
+
 
 const Movies = () => {
   const movie = useSelector((state) => state.movie);
@@ -24,21 +25,18 @@ const Movies = () => {
         {movie.dbType === "discover/movie"
           ? "MOVIES"
           : movie.dbType === "discover/tv"
-          ? "TV SERIES"
-          : movie.dbType === "trending/all/day"
-          ? "TRENDING"
-          : ""}
+            ? "TV SERIES"
+            : movie.dbType === "trending/all/day"
+              ? "TRENDING"
+              : ""}
       </h2>
-
-      <MovieGenre />
 
       <div className="movie-box">
         {movie.data.results?.map((e, i) => (
           <CardList key={i} elem={e} />
         ))}
       </div>
-
-      {/* <Pagination /> */}
+      <PaginationPage />
     </div>
   );
 };

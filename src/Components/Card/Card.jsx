@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const CardList = ({ elem }) => {
   const movie = useSelector((state) => state.movie);
 
-  let rating = elem.vote_average.toFixed(2);
+  let rating = elem.vote_average?.toFixed(2);
 
   return (
     <motion.div

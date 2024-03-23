@@ -58,7 +58,7 @@ const Footer = () => {
         />
       </Tooltip>
       <Tooltip title="Search">
-        <SearchOutlinedIcon className="footer-icon" style={{}} />
+        <SearchOutlinedIcon className="footer-icon" />
       </Tooltip>
     </div>
   );
