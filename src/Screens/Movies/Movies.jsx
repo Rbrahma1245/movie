@@ -15,8 +15,10 @@ const Movies = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAPI({ page: movie.page, dbType: movie.dbType }));
-  }, [movie.page, movie.dbType]);
+    dispatch(fetchAPI({ page: movie.page, dbType: movie.dbType, isGenereById: movie.isGenereById, genereID: movie.genereID }));
+
+
+  }, [movie.page, movie.dbType, movie.isGenereById]);
 
   if (movie.loading == "pending") return <Loader />;
 

@@ -8,13 +8,18 @@ const initialState = {
   page: 1,
   dbType: "trending/all/day",
   movieGenre: {},
+
+  genereID: undefined,
+  isGenereById: false,
 };
 
 export const fetchAPI = createAsyncThunk(
   "fetchAPI",
-  async ({ page, dbType }) => {
+  async ({ page=1, dbType, isGenereById, genereID }) => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/${dbType}?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef&page=${page}`
+      `https://api.themoviedb.org/3/${dbType}?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef${
+        isGenereById ? `&with_genres=${genereID}` : ""
+      }&page=${page}`
     );
     return response.data;
   }
@@ -33,11 +38,10 @@ export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async () => {
 //     const response = await axios.get(
 //       `https://api.themoviedb.org/3/discover/movie?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef&with_genres=${id}&page=${page}`
 //     );
- 
+
 //     return response.data;
 //   }
 // );
-
 
 const MovieSlice = createSlice({
   name: "movie",
@@ -49,7 +53,16 @@ const MovieSlice = createSlice({
     changeAPI: (state, action) => {
       state.dbType = action.payload;
       state.movieGenre = {};
-      state.page = 1;
+
+    },
+    changeMovieGenere: (state, action) => {
+      state.isGenereById = true;
+      state.dbType = action.payload.dbType;
+      state.genereID = action.payload.genereId;
+
+    },
+    setIsGenereByIdFalse(state) {
+      state.isGenereById = false;
     },
   },
   extraReducers: (builder) => {
@@ -61,6 +74,7 @@ const MovieSlice = createSlice({
       .addCase(fetchAPI.fulfilled, (state, action) => {
         state.loading = "idle";
         state.data = action.payload;
+        // state.isGenereById = false;
       })
       .addCase(fetchMovieGenre.rejected, (state, action) => {
         state.loading = "idle";
@@ -73,5 +87,10 @@ const MovieSlice = createSlice({
   },
 });
 
-export const { changePage, changeAPI } = MovieSlice.actions;
+export const {
+  changePage,
+  changeAPI,
+  changeMovieGenere,
+  setIsGenereByIdFalse,
+} = MovieSlice.actions;
 export default MovieSlice.reducer;
