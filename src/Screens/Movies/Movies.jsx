@@ -7,6 +7,7 @@ import "./Movies.scss";
 import Loader from "../../Components/Loader";
 import Pagination from "../../Components/Pagination/Pagination";
 import PaginationPage from "../../Components/Pagination/Pagination";
+import MovieGenre from "../../Components/MovieGenre/MovieGenre";
 
 
 const Movies = () => {
@@ -30,7 +31,7 @@ const Movies = () => {
               ? "TRENDING"
               : ""}
       </h2>
-
+      <MovieGenre />
       <div className="movie-box">
         {movie.data.results?.map((e, i) => (
           <CardList key={i} elem={e} />
