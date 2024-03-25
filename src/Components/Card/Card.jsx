@@ -9,9 +9,13 @@ import {
 
 import "./Card.scss";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const CardList = ({ elem }) => {
-  let rating = elem.vote_average.toFixed(2);
+  const movie = useSelector((state) => state.movie);
+
+  let rating = elem.vote_average?.toFixed(2);
+
   return (
     <motion.div
       className="card-container"
@@ -32,8 +36,18 @@ const CardList = ({ elem }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Movie</Button>
-            <Button size="small">{elem.release_date || elem.first_air_date}</Button>
+            <Button size="small" style={{ textTransform: "none" }}>
+              {movie.dbType === "discover/movie"
+                ? "Movies"
+                : movie.dbType === "discover/tv"
+                ? "TV Series"
+                : movie.dbType === "trending/all/day"
+                ? elem.media_type?.replace(/^\w/, (c) => c.toUpperCase())
+                : ""}
+            </Button>
+            <Button size="small" style={{ textTransform: "none" }}>
+              {elem.release_date || elem.first_air_date}
+            </Button>
           </CardActions>
         </Card>
       </Badge>

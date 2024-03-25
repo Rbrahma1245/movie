@@ -1,0 +1,17 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  li {
+    button {
+      color: white !important;
+    }
+    div {
+      color: white !important;
+    }
+  }
+  .css-rppfq7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #bb9c21 !important;
+  }
+}
