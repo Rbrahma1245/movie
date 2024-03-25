@@ -25,9 +25,9 @@ export const fetchAPI = createAsyncThunk(
   }
 );
 
-export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async () => {
+export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async (genreType) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef`
+    `https://api.themoviedb.org/3/genre/${genreType}/list?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef`
   );
   return response.data;
 });
@@ -45,7 +45,6 @@ const MovieSlice = createSlice({
       state.dbType = action.payload;
       state.movieGenre = {};
       state.page = 1
-
     },
     changeMovieGenere: (state, action) => {
       state.isGenereById = true;
@@ -64,7 +63,7 @@ const MovieSlice = createSlice({
       .addCase(fetchAPI.fulfilled, (state, action) => {
         state.loading = "idle";
         state.data = action.payload;
-        // state.isGenereById = false;
+        state.isGenereById = false;
       })
       .addCase(fetchMovieGenre.rejected, (state, action) => {
         state.loading = "idle";
