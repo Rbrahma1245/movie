@@ -32,16 +32,7 @@ export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async () => {
   return response.data;
 });
 
-// export const searchMovieByID = createAsyncThunk(
-//   "fetchAPIById",
-//   async (id) => {
-//     const response = await axios.get(
-//       `https://api.themoviedb.org/3/discover/movie?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef&with_genres=${id}&page=${page}`
-//     );
 
-//     return response.data;
-//   }
-// );
 
 const MovieSlice = createSlice({
   name: "movie",
@@ -60,9 +51,6 @@ const MovieSlice = createSlice({
       state.dbType = action.payload.dbType;
       state.genereID = action.payload.genereId;
 
-    },
-    setIsGenereByIdFalse(state) {
-      state.isGenereById = false;
     },
   },
   extraReducers: (builder) => {

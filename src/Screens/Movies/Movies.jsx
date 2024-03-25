@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAPI } from "../../Reducer/MoviesSlice";
@@ -5,7 +6,6 @@ import CardList from "../../Components/Card/Card";
 
 import "./Movies.scss";
 import Loader from "../../Components/Loader";
-import Pagination from "../../Components/Pagination/Pagination";
 import PaginationPage from "../../Components/Pagination/Pagination";
 import MovieGenre from "../../Components/MovieGenre/MovieGenre";
 
@@ -17,8 +17,7 @@ const Movies = () => {
   useEffect(() => {
     dispatch(fetchAPI({ page: movie.page, dbType: movie.dbType, isGenereById: movie.isGenereById, genereID: movie.genereID }));
 
-
-  }, [movie.page, movie.dbType, movie.isGenereById]);
+  }, [movie.page, movie.dbType, movie.genereID]);
 
   if (movie.loading == "pending") return <Loader />;
 
