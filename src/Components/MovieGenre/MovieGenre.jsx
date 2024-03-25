@@ -47,11 +47,7 @@ const MovieGenre = () => {
     <>
       {isMobile ? (
         <div className="mobile-container">
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={handleOpen}
-          >
+          <Button variant="outlined" size="small" onClick={handleOpen}>
             <DragHandleIcon />
           </Button>
           <Drawer anchor="right" open={isOpen} onClose={handleClose}>
@@ -67,12 +63,17 @@ const MovieGenre = () => {
       ) : (
         <div className="movieGenre-container">
           {movie.movieGenre.genres?.map((e) => {
+            const isClicked = movie.genereID === e.id;
             return (
               <div key={e.id}>
                 <Button
                   variant="outlined"
                   size="small"
                   style={{ textTransform: "none" }}
+                  sx={{
+                    color: isClicked ? "#bb9c21" : "#c9c4b3",
+                    borderColor: isClicked ? "#bb9c21" : "#c9c4b3",
+                  }}
                   onClick={() => handleClick(e.id)}
                 >
                   {e.name}
