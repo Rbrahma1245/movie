@@ -10,13 +10,14 @@ const MovieGenre = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (movie.dbType == "discover/movie") {
-      dispatch(fetchMovieGenre());
+    if (movie.dbType !== "trending/all/day") {
+      let genreType = movie.dbType === "discover/movie" ? "movie" : "tv";
+      dispatch(fetchMovieGenre(genreType));
     }
-  }, [movie.dbType == "discover/movie"]);
+  }, [movie.dbType]);
 
   const handleClick = (id) => {
-    dispatch(changeMovieGenere({ dbType: "discover/movie", genereId: id }));
+    dispatch(changeMovieGenere({ dbType: movie.dbType, genereId: id }));
   };
 
   // console.log(movie);
