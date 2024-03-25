@@ -38,7 +38,7 @@ const CardList = ({ elem }) => {
           <CardActions>
             <Button size="small" style={{ textTransform: "none" }}>
               {movie.dbType === "discover/movie"
-                ? "Movies"
+                ? "Movie"
                 : movie.dbType === "discover/tv"
                 ? "TV Series"
                 : movie.dbType === "trending/all/day"

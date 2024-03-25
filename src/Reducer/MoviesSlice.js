@@ -44,12 +44,14 @@ const MovieSlice = createSlice({
     changeAPI: (state, action) => {
       state.dbType = action.payload;
       state.movieGenre = {};
+      state.page = 1
 
     },
     changeMovieGenere: (state, action) => {
       state.isGenereById = true;
       state.dbType = action.payload.dbType;
       state.genereID = action.payload.genereId;
+      state.page = 1
 
     },
   },

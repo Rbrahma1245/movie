@@ -19,7 +19,7 @@ const MovieGenre = () => {
     dispatch(changeMovieGenere({ dbType: "discover/movie", genereId: id }));
   };
 
-  console.log(movie);
+  // console.log(movie);
 
   return (
     <div className="movieGenre-container">
