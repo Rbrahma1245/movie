@@ -8,11 +8,14 @@ import "./Movies.scss";
 import Loader from "../../Components/Loader";
 import PaginationPage from "../../Components/Pagination/Pagination";
 import MovieGenre from "../../Components/MovieGenre/MovieGenre";
+import { useMediaQuery } from "@mui/material";
 
 
 const Movies = () => {
   const movie = useSelector((state) => state.movie);
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery("(max-width:600px)");
+
 
   useEffect(() => {
     dispatch(fetchAPI({ page: movie.page, dbType: movie.dbType, isGenereById: movie.isGenereById, genereID: movie.genereID }));
@@ -23,7 +26,7 @@ const Movies = () => {
 
   return (
     <div className="movie-container">
-      <h2>
+      <h2 style={{fontSize: isMobile && "14px" }}>
         {movie.dbType === "discover/movie"
           ? "MOVIES"
           : movie.dbType === "discover/tv"

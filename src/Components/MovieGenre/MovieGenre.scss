@@ -11,3 +11,13 @@
   border-color: #c9c4b3 !important;
   color: #c9c4b3 !important;
 }
+
+.mobile-container {
+  position: absolute;
+  top: 11%;
+  left: 80%;
+
+  button {
+    border: none;
+  }
+}
