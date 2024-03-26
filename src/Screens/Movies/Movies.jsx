@@ -26,7 +26,7 @@ const Movies = () => {
 
   return (
     <div className="movie-container">
-      <h2 style={{fontSize: isMobile && "14px" }}>
+      <h2 style={{fontSize: isMobile && "16px" }}>
         {movie.dbType === "discover/movie"
           ? "MOVIES"
           : movie.dbType === "discover/tv"
