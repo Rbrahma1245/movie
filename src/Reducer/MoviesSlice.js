@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import Config from "../Config/Config";
 
 const initialState = {
   data: [],
@@ -17,7 +18,7 @@ export const fetchAPI = createAsyncThunk(
   "fetchAPI",
   async ({ page=1, dbType, isGenereById, genereID }) => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/${dbType}?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef${
+      `https://api.themoviedb.org/3/${dbType}?api_key=${Config.tmdbKey}${
         isGenereById ? `&with_genres=${genereID}` : ""
       }&page=${page}`
     );
@@ -27,7 +28,7 @@ export const fetchAPI = createAsyncThunk(
 
 export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async (genreType) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/genre/${genreType}/list?api_key=5f047e2fe0b11cb702bceaa2ca86c0ef`
+    `https://api.themoviedb.org/3/genre/${genreType}/list?api_key=${Config.tmdbKey}`
   );
   return response.data;
 });
