@@ -16,7 +16,7 @@ const initialState = {
 
 export const fetchAPI = createAsyncThunk(
   "fetchAPI",
-  async ({ page=1, dbType, isGenereById, genereID }) => {
+  async ({ page = 1, dbType, isGenereById, genereID }) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/${dbType}?api_key=${Config.tmdbKey}${
         isGenereById ? `&with_genres=${genereID}` : ""
@@ -26,14 +26,25 @@ export const fetchAPI = createAsyncThunk(
   }
 );
 
-export const fetchMovieGenre = createAsyncThunk("fetchMovieGenre", async (genreType) => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/genre/${genreType}/list?api_key=${Config.tmdbKey}`
-  );
-  return response.data;
-});
+export const fetchMovieGenre = createAsyncThunk(
+  "fetchMovieGenre",
+  async (genreType) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/genre/${genreType}/list?api_key=${Config.tmdbKey}`
+    );
+    return response.data;
+  }
+);
 
-
+export const fetchMovieDetailById = createAsyncThunk(
+  "fetchMovieDetailById",
+  async (movieId) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${Config.tmdbKey}`
+    );
+    return response.data;
+  }
+);
 
 const MovieSlice = createSlice({
   name: "movie",
@@ -45,7 +56,7 @@ const MovieSlice = createSlice({
     changeAPI: (state, action) => {
       state.dbType = action.payload;
       state.movieGenre = {};
-      state.page = 1
+      state.page = 1;
     },
     changeMovieGenere: (state, action) => {
       state.isGenereById = true;
@@ -72,6 +83,10 @@ const MovieSlice = createSlice({
 
       .addCase(fetchMovieGenre.fulfilled, (state, action) => {
         state.movieGenre = action.payload;
+      })
+
+      .addCase(fetchMovieDetailById.fulfilled, (state, action) => {
+        state.data = action.payload;
       });
   },
 });
