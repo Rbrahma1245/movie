@@ -50,8 +50,7 @@ const MovieSlice = createSlice({
       state.isGenereById = true;
       state.dbType = action.payload.dbType;
       state.genereID = action.payload.genereId;
-      state.page = 1
-
+      state.page = 1;
     },
   },
   extraReducers: (builder) => {
