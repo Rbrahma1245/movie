@@ -10,7 +10,6 @@ import PaginationPage from "../../Components/Pagination/Pagination";
 import MovieGenre from "../../Components/MovieGenre/MovieGenre";
 import { useMediaQuery } from "@mui/material";
 
-
 const Movies = () => {
   const movie = useSelector((state) => state.movie);
   const dispatch = useDispatch();
@@ -23,6 +22,8 @@ const Movies = () => {
   }, [movie.page, movie.dbType, movie.genereID]);
 
   if (movie.loading == "pending") return <Loader />;
+
+  // console.log(process.env.REACT_APP_TMDB_KEY);
 
   return (
     <div className="movie-container">
