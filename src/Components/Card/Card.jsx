@@ -10,6 +10,7 @@ import {
 import "./Card.scss";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const CardList = ({ elem }) => {
   const movie = useSelector((state) => state.movie);
@@ -17,6 +18,7 @@ const CardList = ({ elem }) => {
   let rating = elem.vote_average?.toFixed(2);
 
   return (
+    <NavLink to={`${elem.id}`}>
     <motion.div
       className="card-container"
       whileHover={{ scale: 1.04 }}
@@ -52,6 +54,7 @@ const CardList = ({ elem }) => {
         </Card>
       </Badge>
     </motion.div>
+    </NavLink>
   );
 };
 
