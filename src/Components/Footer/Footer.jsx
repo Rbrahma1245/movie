@@ -15,12 +15,15 @@ const Footer = () => {
     trending: true,
     movie: false,
     tv: false,
+    search: false,
   });
 
   const dispatch = useDispatch();
 
   function handleClick(dbType) {
-    dispatch(changeAPI(dbType));
+    if (dbType !== "search") {
+      dispatch(changeAPI(dbType));
+    }
 
     window.scrollTo({
       top: 0,
@@ -32,9 +35,10 @@ const Footer = () => {
       trending: dbType === "trending/all/day" ? true : false,
       movie: dbType === "discover/movie" ? true : false,
       tv: dbType === "discover/tv" ? true : false,
+      search: dbType === "search" ? true : false,
     });
   }
-  
+
   return (
     <div className="footer-container">
       <Tooltip title="Trending">
@@ -66,7 +70,13 @@ const Footer = () => {
       </Tooltip>
 
       <Tooltip title="Search">
-        <SearchOutlinedIcon className="footer-icon" />
+        <NavLink to="/search">
+          <SearchOutlinedIcon
+            className="footer-icon"
+            style={{ color: isClicked.search ? "#bb9c21" : "" }}
+            onClick={() => handleClick("search")}
+          />
+        </NavLink>
       </Tooltip>
     </div>
   );

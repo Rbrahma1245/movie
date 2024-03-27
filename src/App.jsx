@@ -7,6 +7,8 @@ import Page404 from "./Screens/Page404";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import MovieDetails from "./Components/MovieDetails/MovieDetails";
+import SearchBar from "./Components/Search/SearchBar";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path="/trending" element={<Trending />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvseries" element={<TVSeries />} />
+          <Route path="/search" element={<SearchBar />} />
           <Route path=":elemType/:movieId" element={<MovieDetails />} />
           <Route path="*" element={<Page404 />} />
         </Routes>

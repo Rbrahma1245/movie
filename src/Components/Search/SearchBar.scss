@@ -1,0 +1,21 @@
+.searchBar-container {
+    margin-top: 10px;
+    text-align: center;
+
+    .input-box{
+      display: flex;
+      justify-content: end;
+      margin: 0% 5%;
+    }
+  
+    .searchBar-box {
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 50;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+  

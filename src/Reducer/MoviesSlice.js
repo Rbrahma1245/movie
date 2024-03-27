@@ -38,9 +38,19 @@ export const fetchMovieGenre = createAsyncThunk(
 
 export const fetchMovieDetailById = createAsyncThunk(
   "fetchMovieDetailById",
-  async ({elemType, movieId}) => {
+  async ({ elemType, movieId }) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/${elemType}/${movieId}?api_key=${Config.tmdbKey}`
+    );
+    return response.data;
+  }
+);
+
+export const search = createAsyncThunk(
+  "search",
+  async ({ query = "k", page }) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/search/multi?api_key=${Config.tmdbKey}&page=${page}&query=${query}`
     );
     return response.data;
   }
@@ -87,6 +97,10 @@ const MovieSlice = createSlice({
 
       .addCase(fetchMovieDetailById.fulfilled, (state, action) => {
         state.data = action.payload;
+      })
+      .addCase(search.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.dbType = "trending/all/day";
       });
   },
 });
@@ -96,5 +110,6 @@ export const {
   changeAPI,
   changeMovieGenere,
   setIsGenereByIdFalse,
+  changeDbType,
 } = MovieSlice.actions;
 export default MovieSlice.reducer;
