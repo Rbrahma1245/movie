@@ -14,9 +14,6 @@ const MovieDetails = () => {
     dispatch(fetchMovieDetailById({elemType, movieId}));
   }, []);
 
-  console.log(movie);
-
-
 
   const hours = Math.floor(movie.data?.runtime / 60);
   const minutes = movie.data?.runtime% 60;

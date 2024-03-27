@@ -16,17 +16,16 @@ const CardList = ({ elem }) => {
   const movie = useSelector((state) => state.movie);
 
   let rating = elem.vote_average?.toFixed(2);
+  const valueAfterSlash = movie.dbType.split("/").pop();
 
-  // console.log(elem.media_type, "test elem");
-console.log(movie, "from card");
-
-const valueAfterSlash = movie.dbType.split("/")[1];
-
-console.log(valueAfterSlash); 
   return (
-    // <NavLink to={`/${elem?.media_type}/${elem?.id}`}>
-    <NavLink to={`/${valueAfterSlash == "all" ? elem?.media_type : valueAfterSlash}/${elem?.id}`}>
-
+    <NavLink
+      to={`/${
+        valueAfterSlash == "day" || valueAfterSlash === "search"
+          ? elem?.media_type
+          : valueAfterSlash
+      }/${elem?.id}`}
+    >
       <motion.div
         className="card-container"
         whileHover={{ scale: 1.04 }}
@@ -54,6 +53,8 @@ console.log(valueAfterSlash);
                   : movie.dbType === "trending/all/day"
                   ? elem.media_type?.replace(/^\w/, (c) => c.toUpperCase())
                   : ""}
+                {movie.dbType == "search" &&
+                  elem.media_type?.replace(/^\w/, (c) => c.toUpperCase())}
               </Button>
               <Button size="small" style={{ textTransform: "none" }}>
                 {elem.release_date || elem.first_air_date}
