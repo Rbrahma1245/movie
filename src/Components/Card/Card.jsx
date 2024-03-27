@@ -18,6 +18,12 @@ const CardList = ({ elem }) => {
   let rating = elem.vote_average?.toFixed(2);
   const valueAfterSlash = movie.dbType.split("/").pop();
 
+  function handleCardClick() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
   return (
     <NavLink
       to={`/${
@@ -25,6 +31,7 @@ const CardList = ({ elem }) => {
           ? elem?.media_type
           : valueAfterSlash
       }/${elem?.id}`}
+      onClick={handleCardClick}
     >
       <motion.div
         className="card-container"

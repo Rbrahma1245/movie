@@ -26,18 +26,18 @@ const SearchBar = () => {
 
   return (
     <div className="searchBar-container">
-      <div className="input-box">   
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
-          value={query}
-          onChange={handleInputChange}
-        />
-      </Search>
+      <div className="input-box">
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+            value={query}
+            onChange={handleInputChange}
+          />
+        </Search>
       </div>
 
       <div className="searchBar-box">
@@ -52,7 +52,6 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
