@@ -33,6 +33,7 @@ const MovieDetails = () => {
         style={{
           display: "flex",
           padding: 10,
+          height:"70vh",
           flexDirection: isMobile ? "column" : "row",
           justifyContent: "space-evenly",
         }}
@@ -45,7 +46,7 @@ const MovieDetails = () => {
             style={{ width: "100%", height: "450px", borderRadius: 8 }}
           />
         </div>
-        <div style={{ width: isMobile ? "100%" : "60%" , marginTop:10}} >
+        <div style={{ width: isMobile ? "100%" : "60%", marginTop: 10 }}>
           <Typography variant={isMobile ? "subtitle1" : "h5"}>
             {movie.data.original_title || movie.data.original_name}
             {` (${
@@ -60,7 +61,10 @@ const MovieDetails = () => {
             {movie.data?.runtime ? `  * ${hours}hr ${minutes}min ` : ""}
           </Typography>
 
-          <Typography variant={isMobile ? "subtitle1" : "h5"} mt={isMobile ? 2 : 5}>
+          <Typography
+            variant={isMobile ? "subtitle1" : "h5"}
+            mt={isMobile ? 2 : 5}
+          >
             Overview
           </Typography>
           <Typography variant={isMobile ? "span" : "subtitle1"}>

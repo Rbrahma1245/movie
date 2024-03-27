@@ -44,7 +44,6 @@ const CardList = ({ elem }) => {
               src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
               alt={elem.title}
               loading="lazy"
-              style={{}}
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
