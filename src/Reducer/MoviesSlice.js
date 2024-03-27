@@ -38,9 +38,9 @@ export const fetchMovieGenre = createAsyncThunk(
 
 export const fetchMovieDetailById = createAsyncThunk(
   "fetchMovieDetailById",
-  async (movieId) => {
+  async ({elemType, movieId}) => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${Config.tmdbKey}`
+      `https://api.themoviedb.org/3/${elemType}/${movieId}?api_key=${Config.tmdbKey}`
     );
     return response.data;
   }
