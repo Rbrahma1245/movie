@@ -18,7 +18,7 @@ function App() {
           <Route path="/trending" element={<Trending />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvseries" element={<TVSeries />} />
-          <Route path="/:movieId" element={<MovieDetails />} />
+          <Route path=":elemType/:movieId" element={<MovieDetails />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />

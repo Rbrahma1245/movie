@@ -8,6 +8,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Tooltip } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeAPI } from "../../Reducer/MoviesSlice";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   let [isClicked, setIsClicked] = useState({
@@ -33,30 +34,37 @@ const Footer = () => {
       tv: dbType === "discover/tv" ? true : false,
     });
   }
-
+  
   return (
     <div className="footer-container">
       <Tooltip title="Trending">
-        <WhatshotOutlinedIcon
-          className="footer-icon"
-          style={{ color: isClicked.trending ? "#bb9c21" : "" }}
-          onClick={() => handleClick("trending/all/day")}
-        />
+        <NavLink to="/">
+          <WhatshotOutlinedIcon
+            className="footer-icon"
+            style={{ color: isClicked.trending ? "#bb9c21" : "" }}
+            onClick={() => handleClick("trending/all/day")}
+          />
+        </NavLink>
       </Tooltip>
       <Tooltip title="Movies">
-        <MovieCreationOutlinedIcon
-          className="footer-icon"
-          style={{ color: isClicked.movie ? "#bb9c21" : "" }}
-          onClick={() => handleClick("discover/movie")}
-        />
+        <NavLink to="/">
+          <MovieCreationOutlinedIcon
+            className="footer-icon"
+            style={{ color: isClicked.movie ? "#bb9c21" : "" }}
+            onClick={() => handleClick("discover/movie")}
+          />
+        </NavLink>
       </Tooltip>
       <Tooltip title="TV Series">
-        <TvOutlinedIcon
-          className="footer-icon"
-          style={{ color: isClicked.tv ? "#bb9c21" : "" }}
-          onClick={() => handleClick("discover/tv")}
-        />
+        <NavLink to="/">
+          <TvOutlinedIcon
+            className="footer-icon"
+            style={{ color: isClicked.tv ? "#bb9c21" : "" }}
+            onClick={() => handleClick("discover/tv")}
+          />
+        </NavLink>
       </Tooltip>
+
       <Tooltip title="Search">
         <SearchOutlinedIcon className="footer-icon" />
       </Tooltip>
