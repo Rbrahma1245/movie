@@ -1,5 +1,5 @@
 const Page404 = () => {
-  return <div>Page404</div>;
+  return <div style={{height:"80vh"}}>Page404</div>;
 };
 
 export default Page404;
