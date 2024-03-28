@@ -12,6 +12,7 @@ const initialState = {
 
   genereID: undefined,
   isGenereById: false,
+  isSearch: false
 };
 
 export const fetchAPI = createAsyncThunk(
@@ -67,6 +68,7 @@ const MovieSlice = createSlice({
       state.dbType = action.payload;
       state.movieGenre = {};
       state.page = 1;
+      state.isSearch = false
     },
     changeMovieGenere: (state, action) => {
       state.isGenereById = true;
@@ -101,6 +103,7 @@ const MovieSlice = createSlice({
       .addCase(search.fulfilled, (state, action) => {
         state.data = action.payload;
         state.dbType = "trending/all/day";
+        state.isSearch = true
       });
   },
 });

@@ -20,7 +20,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <NavLink to="/">
+      <NavLink to={movie.isSearch ? "/search" : "/"}>
         <Button
           variant="outlined"
           style={{ margin: 10 }}
@@ -33,7 +33,7 @@ const MovieDetails = () => {
         style={{
           display: "flex",
           padding: 10,
-          height:"70vh",
+          height:isMobile?"auto": "70vh",
           flexDirection: isMobile ? "column" : "row",
           justifyContent: "space-evenly",
         }}

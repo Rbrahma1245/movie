@@ -22,7 +22,8 @@ const SearchBar = () => {
     dispatch(search({ query: query == "" ? "k" : query, page: movie.page }));
   }, [movie.page, query]);
 
-  window.history.replaceState(null, null, "/");
+  // window.history.replaceState(null, null, "/");
+  // window.location.href = "/";
 
   return (
     <div className="searchBar-container">
