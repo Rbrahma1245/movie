@@ -7,6 +7,7 @@ import CardList from "../Card/Card";
 import PaginationPage from "../Pagination/Pagination";
 import { InputBase, alpha, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { debounce } from "../../utils";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -14,16 +15,16 @@ const SearchBar = () => {
   const movie = useSelector((state) => state.movie);
   const dispatch = useDispatch();
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
-
   useEffect(() => {
     dispatch(search({ query: query == "" ? "k" : query, page: movie.page }));
   }, [movie.page, query]);
 
-  // window.history.replaceState(null, null, "/");
-  // window.location.href = "/";
+
+  function handleInputChange(e) {
+    setQuery(e.target.value)
+  }
+
+  let debounceInput = debounce(handleInputChange, 500);
 
   return (
     <div className="searchBar-container">
@@ -35,8 +36,7 @@ const SearchBar = () => {
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
-            value={query}
-            onChange={handleInputChange}
+            onChange={debounceInput}
           />
         </Search>
       </div>

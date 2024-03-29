@@ -12,7 +12,9 @@ const initialState = {
 
   genereID: undefined,
   isGenereById: false,
-  isSearch: false
+  isSearch: false,
+
+  rating: ""
 };
 
 export const fetchAPI = createAsyncThunk(
@@ -76,6 +78,10 @@ const MovieSlice = createSlice({
       state.genereID = action.payload.genereId;
       state.page = 1;
     },
+
+    changeRating: (state,action) =>{
+      state.rating = action.payload
+    }
   },
   extraReducers: (builder) => {
     // console.log(builder, "builder");
@@ -114,5 +120,6 @@ export const {
   changeMovieGenere,
   setIsGenereByIdFalse,
   changeDbType,
+  changeRating
 } = MovieSlice.actions;
 export default MovieSlice.reducer;
