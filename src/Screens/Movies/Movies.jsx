@@ -65,33 +65,49 @@ const Movies = () => {
     setSortedResults(updatedResults);
   };
 
-  console.log(movie);
 
   if (movie.loading == "pending") return <Loader />;
 
   return (
     <div className="movie-container">
-      <h2 style={{ fontSize: isMobile && "16px" }}>
-        {movie.dbType === "discover/movie"
-          ? "MOVIES"
-          : movie.dbType === "discover/tv"
-          ? "TV SERIES"
-          : movie.dbType === "trending/all/day"
-          ? "TRENDING"
-          : ""}
-      </h2>
-      <DatePicker selected={selectedDate} onChange={handleDateChange} />
-      {selectedDate && (
-        <p>Selected Date: {selectedDate.toLocaleDateString()}</p>
-      )}
-      <SelectField />
-      <MovieGenre />
-      <div className="movie-box">
-        {sortedResults?.map((e, i) => (
-          <CardList key={i} elem={e} />
-        ))}
+      <div
+        className="header-content"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10%",
+          marginBottom: "15px",
+        }}
+      >
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="yyyy"
+          showYearPicker
+        />
+
+        <h2 style={{ fontSize: isMobile && "16px" }}>
+          {movie.dbType === "discover/movie"
+            ? "MOVIES"
+            : movie.dbType === "discover/tv"
+            ? "TV SERIES"
+            : movie.dbType === "trending/all/day"
+            ? "TRENDING"
+            : ""}
+        </h2>
+        <SelectField />
       </div>
-      <PaginationPage />
+
+      {sortedResults.length > 0 && <MovieGenre />}
+      <div className="movie-box">
+        {sortedResults.length == 0 ? (
+          <div style={{ height: "70vh", marginTop:50 }}>No data Found... </div>
+        ) : (
+          sortedResults?.map((e, i) => <CardList key={i} elem={e} />)
+        )}
+      </div>
+      {sortedResults.length > 0 && <PaginationPage />}
     </div>
   );
 };
