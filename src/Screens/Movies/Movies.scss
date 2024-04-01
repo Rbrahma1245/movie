@@ -13,6 +13,7 @@
 .movie-container {
   // margin-bottom: 50px;
   text-align: center;
+  height: fit-content;
 
   h2 {
     letter-spacing: 2px;
@@ -36,4 +37,13 @@
   align-items: "center";
   gap: "10%";
   margin-bottom: "15px";
+}
+
+
+.react-datepicker-wrapper{
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 }
