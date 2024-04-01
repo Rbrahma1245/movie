@@ -65,6 +65,7 @@ const Movies = () => {
     setSortedResults(updatedResults);
   };
 
+  const currentYear = new Date().getFullYear();
 
   if (movie.loading == "pending") return <Loader />;
 
@@ -78,6 +79,7 @@ const Movies = () => {
           alignItems: "center",
           gap: "10%",
           marginBottom: "15px",
+          flexDirection: isMobile ? "column" : "row",
         }}
       >
         <DatePicker
@@ -85,6 +87,7 @@ const Movies = () => {
           onChange={handleDateChange}
           dateFormat="yyyy"
           showYearPicker
+          maxDate={new Date(currentYear, 11, 31)}
         />
 
         <h2 style={{ fontSize: isMobile && "16px" }}>
@@ -102,7 +105,7 @@ const Movies = () => {
       {sortedResults.length > 0 && <MovieGenre />}
       <div className="movie-box">
         {sortedResults.length == 0 ? (
-          <div style={{ height: "70vh", marginTop:50 }}>No data Found... </div>
+          <div style={{ height: "70vh", marginTop: 50 }}>No data Found... </div>
         ) : (
           sortedResults?.map((e, i) => <CardList key={i} elem={e} />)
         )}
