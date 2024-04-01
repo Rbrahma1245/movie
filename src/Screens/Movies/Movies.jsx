@@ -71,7 +71,7 @@ const Movies = () => {
 
   return (
     <div className="movie-container">
-      <h2 style={{ fontSize: isMobile && "16px" }}>
+      {/* <h2 style={{ fontSize: isMobile && "16px" }}>
         {movie.dbType === "discover/movie"
           ? "MOVIES"
           : movie.dbType === "discover/tv"
@@ -79,12 +79,26 @@ const Movies = () => {
           : movie.dbType === "trending/all/day"
           ? "TRENDING"
           : ""}
-      </h2>
-      <DatePicker selected={selectedDate} onChange={handleDateChange} />
-      {selectedDate && (
+      </h2> */}
+
+      <div className="header-content" style={{ display: "flex", justifyContent:"center", alignItems:"center", gap:"10%", marginBottom:"15px" }}>
+        <DatePicker selected={selectedDate} onChange={handleDateChange}/>
+        {/* {selectedDate && (
         <p>Selected Date: {selectedDate.toLocaleDateString()}</p>
-      )}
-      <SelectField />
+      )} */}
+        <h2 style={{ fontSize: isMobile && "16px"}}>
+          {movie.dbType === "discover/movie"
+            ? "MOVIES"
+            : movie.dbType === "discover/tv"
+              ? "TV SERIES"
+              : movie.dbType === "trending/all/day"
+                ? "TRENDING"
+                : ""}
+        </h2>
+        <SelectField />
+      </div>
+
+
       <MovieGenre />
       <div className="movie-box">
         {sortedResults?.map((e, i) => (
