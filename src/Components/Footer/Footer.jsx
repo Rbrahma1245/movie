@@ -9,6 +9,7 @@ import { Tooltip } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { changeAPI } from "../../Reducer/MoviesSlice";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Footer = () => {
   let [isClicked, setIsClicked] = useState({
@@ -68,7 +69,6 @@ const Footer = () => {
           />
         </NavLink>
       </Tooltip>
-
       <Tooltip title="Search">
         <NavLink to="/search">
           <SearchOutlinedIcon
@@ -78,6 +78,9 @@ const Footer = () => {
           />
         </NavLink>
       </Tooltip>
+      <Helmet>
+        <title>{"Trending"}</title>
+      </Helmet>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import PaginationPage from "../Pagination/Pagination";
 import { InputBase, alpha, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { debounce } from "../../utils";
+import { Helmet } from "react-helmet-async";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -48,6 +49,11 @@ const SearchBar = () => {
       </div>
 
       <PaginationPage />
+
+
+      <Helmet>
+        <title>{"Search"}</title>
+      </Helmet>
     </div>
   );
 };
