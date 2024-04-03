@@ -49,7 +49,7 @@ const Movies = () => {
     }
 
     setSortedResults(updatedResults);
-  }, [movie]);
+  }, [movie, sortedResults]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -102,15 +102,15 @@ const Movies = () => {
         <SelectField />
       </div>
 
-      {sortedResults.length > 0 && <MovieGenre />}
+      {sortedResults?.length > 0 && <MovieGenre />}
       <div className="movie-box">
-        {sortedResults.length == 0 ? (
+        {sortedResults?.length == 0 ? (
           <div style={{ height: "70vh", marginTop: 50 }}>No data Found... </div>
         ) : (
           sortedResults?.map((e, i) => <CardList key={i} elem={e} />)
         )}
       </div>
-      {sortedResults.length > 0 && <PaginationPage />}
+      {sortedResults?.length > 0 && <PaginationPage />}
     </div>
   );
 };
