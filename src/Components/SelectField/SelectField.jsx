@@ -14,8 +14,13 @@ const SelectField = () => {
     <div style={{ backgroundColor: "white" }}>
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel>Rating</InputLabel>
-          <Select label="Rating" value={movie?.rating} onChange={handleChange}>
+          <InputLabel id="select-label">Rating</InputLabel>
+          <Select
+            labelId="select-label"
+            label="Rating"
+            value={movie?.rating}
+            onChange={handleChange}
+          >
             <MenuItem value={"LowToHigh"}>Low to High</MenuItem>
             <MenuItem value={"HighToLow"}>High to Low</MenuItem>
             <MenuItem value={"Clear"}>Clear</MenuItem>

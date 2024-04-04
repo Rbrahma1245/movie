@@ -8,7 +8,7 @@ import "./Movies.scss";
 import Loader from "../../Components/Loader";
 import PaginationPage from "../../Components/Pagination/Pagination";
 import MovieGenre from "../../Components/MovieGenre/MovieGenre";
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import SelectField from "../../Components/SelectField/SelectField";
 
 import DatePicker from "react-datepicker";
@@ -82,13 +82,18 @@ const Movies = () => {
           flexDirection: isMobile ? "column" : "row",
         }}
       >
-        <DatePicker
-          selected={selectedDate}
-          onChange={handleDateChange}
-          dateFormat="yyyy"
-          showYearPicker
-          maxDate={new Date(currentYear, 11, 31)}
-        />
+        <Box sx={{display:"flex", flexDirection:"column"}}>
+          <label htmlFor="datePicker">Choose a Date:</label>
+          <DatePicker
+            id="datePicker"
+            selected={selectedDate}
+            onChange={handleDateChange}
+            placeholderText="Select a date"
+            dateFormat="yyyy"
+            showYearPicker
+            maxDate={new Date(currentYear, 11, 31)}
+          />
+        </Box>
 
         <h2 style={{ fontSize: isMobile && "16px" }}>
           {movie.dbType === "discover/movie"
