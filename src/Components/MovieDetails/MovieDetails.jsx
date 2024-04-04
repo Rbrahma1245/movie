@@ -41,8 +41,7 @@ const MovieDetails = () => {
         <div style={{ width: isMobile ? "100%" : "30%" }}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.data.poster_path}`}
-            alt={movie.data.original_title || movie.data.original_name}
-            loading="lazy"
+            alt={movie.data.original_title || movie.data.original_name || "Invalid Image"}
             style={{ width: "100%", height: "450px", borderRadius: 8 }}
           />
         </div>
