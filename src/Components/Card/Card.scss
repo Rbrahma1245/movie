@@ -11,6 +11,7 @@
     height: 300px;
     width: 100%;
     object-fit: inherit;
+    aspect-ratio: auto 3/4;
   }
   .MuiCardActions-root {
     display: flex !important;
