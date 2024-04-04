@@ -53,6 +53,7 @@ const SearchBar = () => {
 
       <Helmet>
         <title>{"Search"}</title>
+        <meta name="description" content="react, helmet, meta tags for search" />
       </Helmet>
     </div>
   );
