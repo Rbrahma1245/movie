@@ -3,27 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeRating } from "../../Reducer/MoviesSlice";
 
 const SelectField = () => {
+  const dispatch = useDispatch();
+  const movie = useSelector((state) => state.movie);
 
-
-    const dispatch = useDispatch()
-    const movie = useSelector((state) => state.movie);
-
-    const handleChange = (event) => {
-        dispatch(changeRating(event.target.value))
-
-    };
-
+  const handleChange = (event) => {
+    dispatch(changeRating(event.target.value));
+  };
 
   return (
-    <div>
+    <div style={{ backgroundColor: "white" }}>
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
           <InputLabel>Rating</InputLabel>
-          <Select label="Rating" value={movie?.rating}   onChange={handleChange}>
+          <Select label="Rating" value={movie?.rating} onChange={handleChange}>
             <MenuItem value={"LowToHigh"}>Low to High</MenuItem>
             <MenuItem value={"HighToLow"}>High to Low</MenuItem>
             <MenuItem value={"Clear"}>Clear</MenuItem>
-
           </Select>
         </FormControl>
       </Box>
