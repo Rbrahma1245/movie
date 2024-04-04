@@ -36,7 +36,7 @@ const SearchBar = () => {
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
+            inputProps={{ ariaLabel: "search" }}
             onChange={debounceInput}
           />
         </Search>

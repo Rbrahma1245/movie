@@ -42,7 +42,7 @@ const CardList = ({ elem }) => {
           <Card sx={{ maxWidth: 400 }}>
             <img
               src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
-              alt={elem.title || "Invalid Image" }
+              alt= {elem.original_title || elem.original_name}
             />
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
