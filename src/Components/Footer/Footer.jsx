@@ -80,6 +80,7 @@ const Footer = () => {
       </Tooltip>
       <Helmet>
         <title>{"Trending"}</title>
+        <meta name="description" content="react, helmet, meta tags for search" />
       </Helmet>
     </div>
   );
