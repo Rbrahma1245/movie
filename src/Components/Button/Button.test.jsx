@@ -7,5 +7,11 @@ test("ButtonRender", () => {
 
   let { getByText } = render(<Button innerText={buttonText} />);
   let buttonElement = getByText(buttonText)
+  
   expect(buttonElement).toBeInTheDocument()
 });
+
+
+// test("", ()=>{
+
+// })
