@@ -1,21 +1,28 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Screens/Home/Home";
-import Trending from "./Screens/Trending/Trending";
-// import Movies from "./Screens/Movies/Movies";
-import TVSeries from "./Screens/TVSeries/TVSeries";
-import Page404 from "./Screens/Page404";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
-import MovieDetails from "./Components/MovieDetails/MovieDetails";
-import SearchBar from "./Components/Search/SearchBar";
-import { lazy } from "react";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import Home from "./Screens/Home/Home";
+// import Trending from "./Screens/Trending/Trending";
+// // import Movies from "./Screens/Movies/Movies";
+// import TVSeries from "./Screens/TVSeries/TVSeries";
+// import Page404 from "./Screens/Page404";
+// import Header from "./Components/Header/Header";
+// import Footer from "./Components/Footer/Footer";
+// import MovieDetails from "./Components/MovieDetails/MovieDetails";
+// import SearchBar from "./Components/Search/SearchBar";
+// import { lazy } from "react";
 
+// import Button from "./Components/Button/Button";
 
 function App() {
-  const Movies = lazy(() => import('./Screens/Movies/Movies'));
+  // const Movies = lazy(() => import('./Screens/Movies/Movies'));
+
+  // function handleClick() {
+  //   console.log("click");
+  // }
   return (
     <>
-      <BrowserRouter>
+      {/* <Button handleClick={handleClick} innerText={"CLICK"} /> */}
+
+      {/* <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" exact element={<Home />} />
@@ -27,7 +34,7 @@ function App() {
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
 
       {/* <BrowserRouter>
         <RouterProvider router={router} />
